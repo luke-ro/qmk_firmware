@@ -69,6 +69,9 @@
 #    define ENABLE_RGB_MATRIX_SPLASH
 #    define ENABLE_RGB_MATRIX_SOLID_SPLASH
 
+// modify the number taps to toggle
+#define TAPPING_TOGGLE 2
+
 /* Set LED driver current */
 #define CKLED2001_CURRENT_TUNE   {0x38, 0x38, 0x38, 0x38, 0x38, 0x38, 0x38, 0x38, 0x38, 0x38, 0x38, 0x38}
 
