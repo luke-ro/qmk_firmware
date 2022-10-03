@@ -28,6 +28,22 @@ enum layers{
   NUMPAD
 };
 
+//tap dance code
+enum {
+  TD_F7PR = 0,
+  TD_F8PL = 1,
+  TD_F9SK = 2,
+  TD_F10M = 3,
+};
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_F7PR] = ACTION_TAP_DANCE_DOUBLE(KC_F7, KC_MPRV),
+  [TD_F8PL] = ACTION_TAP_DANCE_DOUBLE(KC_F8, KC_MPLY),
+  [TD_F9SK] = ACTION_TAP_DANCE_DOUBLE(KC_F9, KC_MNXT),
+  [TD_F10M] = ACTION_TAP_DANCE_DOUBLE(KC_F10, KC_MUTE),
+
+};
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MAC_BASE] = LAYOUT_ansi_87( 
      KC_ESC,   KC_BRID,  KC_BRIU,  KC_MCTL,  KC_LNPD,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,           KC_SNAP,   KC_SIRI,  RGB_MOD,
@@ -46,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS),
 
 [WIN_BASE] = LAYOUT_ansi_87( 
-     KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,                     KC_PSCR,  KC_CTANA, RGB_MOD,
+     KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    TD(TD_F7PR),  TD(TD_F8PL),  TD(TD_F9SK),  TD(TD_F10M),  KC_F11,   KC_F12,                     KC_PSCR,  KC_CTANA, RGB_MOD,
      KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,           KC_BSPC,  KC_INS,   KC_HOME,  KC_PGUP,
      KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,          KC_BSLS,  KC_DEL,   KC_END,   KC_PGDN,
      KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,                    KC_ENT,              
@@ -88,3 +104,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // const key_override_t **key_overrides = (const key_override_t *[]){
 // 	&delete_key_override,
 // 	NULL // Null terminate the array of overrides!
+
+//qmk compile -kb keychron/k8_pro/ansi/rgb -km mykm1
+// make keychron/k8_pro/ansi/rgb:mykm1:flash
